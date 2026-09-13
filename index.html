@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Cutie ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: #000000;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            color: #ffffff;
+        }
+
+        /* 1. Centered Red KD Background Image */
+        #kdBackground {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            background-color: #000000;
+        }
+
+        #kdBackground img {
+            max-width: 92vw;
+            max-height: 92vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            filter: invert(16%) sepia(99%) saturate(7400%) hue-rotate(355deg) brightness(105%) contrast(120%) drop-shadow(0 0 25px rgba(255, 0, 0, 0.9));
+        }
+
+        /* 2. Top-to-Center Special Star */
+        #specialStar {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            font-size: 80px;
+            color: #ff1493;
+            transform: translateX(-50%);
+            animation: specialDrop 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            text-shadow: 0 0 25px #ff1493, 0 0 45px #ff80bf, 0 0 70px #ffffff;
+            z-index: 10;
+        }
+
+        @keyframes specialDrop {
+            0% { top: -80px; opacity: 0; transform: translateX(-50%) scale(0.6); }
+            30% { opacity: 1; }
+            100% { top: 38%; opacity: 1; transform: translateX(-50%) scale(1.35) rotate(360deg); }
+        }
+
+        /* 3. Universal Centered Buttons */
+        .magic-btn {
+            padding: 16px 36px;
+            border-radius: 40px;
+            font-size: 19px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid #ff4d94;
+            background: linear-gradient(135deg, #ff1493, #ff0055);
+            color: #fff;
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.7), 0 0 45px rgba(255, 0, 85, 0.4);
+            transition: transform 0.25s, box-shadow 0.25s;
+            outline: none;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 15px auto 0 auto;
+        }
+
+        .magic-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(255, 20, 147, 0.9), 0 0 60px rgba(255, 0, 85, 0.6);
+        }
+
+        #startButton {
+            display: none;
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            opacity: 0;
+            animation: smoothFadeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes smoothFadeIn {
+            0% { opacity: 0; transform: translate(-50%, -46%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        /* 4. Stage Layouts */
+        .stage-container {
+            display: none;
+            position: fixed;
+            inset: 0;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 25px;
+            z-index: 30;
+        }
+
+        /* Stage 2: Gift Box Shake & Burst */
+        #giftBoxWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #giftBoxImg {
+            width: 220px;
+            height: 220px;
+            max-width: 80vw;
+            max-height: 40vh;
+            object-fit: contain;
+            cursor: pointer;
+            animation: giftShake 0.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px #ff1493);
+        }
+
+        @keyframes giftShake {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-12deg) scale(1.08); }
+            75% { transform: rotate(12deg) scale(1.08); }
+        }
+
+        #birthdayText {
+            display: none;
+            font-size: 48px;
+            font-weight: 900;
+            color: #ff3385;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px #ffffff, 0 0 35px #ff1493;
+            animation: textGrow 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes textGrow {
+            0% { opacity: 0; transform: scale(0.3); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        #continueToEffectsBtn {
+            display: none;
+            animation: smoothFadeIn 1.2s ease forwards;
+        }
+
+        /* Stage 3: Letter Card */
+        .letter-card {
+            background: rgba(10, 0, 5, 0.88);
+            backdrop-filter: blur(15px);
+            border: 2px solid #ff1493;
+            border-radius: 24px;
+            padding: 35px;
+            max-width: 580px;
+            width: 90%;
+            box-shadow: 0 0 45px rgba(255, 20, 147, 0.4);
+            animation: smoothFadeIn 1s ease forwards;
+            cursor: pointer;
+            margin: auto;
+        }
+
+        .letter-card h2 {
+            font-size: 26px;
+            color: #ff3385;
+            margin-bottom: 18px;
+            text-shadow: 0 0 12px rgba(255, 20, 147, 0.5);
+        }
+
+        .letter-card p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #ffe6f0;
+            margin-bottom: 22px;
+        }
+
+        .click-hint {
+            font-size: 14px;
+            color: #ff66b2;
+            letter-spacing: 1px;
+            font-weight: bold;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* 5. Modals */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal-box {
+            background: #110309;
+            border: 2px solid #ff1493;
+            border-radius: 25px;
+            padding: 35px 25px;
+            width: 90%;
+            max-width: 440px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(255, 20, 147, 0.5);
+            position: relative;
+            animation: smoothFadeIn 0.4s ease forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box h3 {
+            font-size: 23px;
+            margin-bottom: 25px;
+            color: #ff66b2;
+        }
+
+        .choice-btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            width: 100%;
+            min-height: 80px;
+            position: relative;
+        }
+
+        #noBtn {
+            background: #2b0d19;
+            border: 1px solid #772b47;
+            color: #ff99bb;
+            position: relative;
+            transition: transform 0.12s ease-out;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        #yesHeartBtn {
+            margin: 0;
+        }
+
+        /* 6. Particle Bursts */
+        .particle {
+            position: absolute;
+            font-size: 30px;
+            pointer-events: none;
+            animation: particleFly 1.5s ease-out forwards;
+            z-index: 99;
+        }
+
+        @keyframes particleFly {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(1.7) rotate(360deg); }
+        }
+
+        /* 7. Uploaded KitKat Image Display */
+        .kitkat-wrapper {
+            animation: kitkatBounce 2s ease infinite alternate;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #kitkatImg {
+            width: 320px;
+            max-width: 85vw;
+            max-height: 45vh;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 0 35px #ff1a1a) drop-shadow(0 0 50px rgba(255, 20, 147, 0.5));
+        }
+
+        @keyframes kitkatBounce {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        /* 8. Final Handover */
+        #finalHandover {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #000000;
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #finalHandover h1 {
+            font-size: 44px;
+            color: #ff1493;
+            margin-bottom: 15px;
+            text-shadow: 0 0 25px #ff1493;
+        }
+
+        #finalHandover p {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Centered Red KD Background Image -->
+    <div id="kdBackground">
+        <img src="./kd.png" alt="KD Background" onerror="this.onerror=null; this.src='./kd.jpg';">
+    </div>
+
+    <!-- Stage 1: Dropping Star -->
+    <div id="specialStar">★</div>
+    <button id="startButton" class="magic-btn">Click Here Cutie ❤️</button>
+
+    <!-- Stage 2: Gift Box Image -->
+    <div id="birthdayScene" class="stage-container">
+        <div id="giftBoxWrapper">
+            <img id="giftBoxImg" src="./gift.png" alt="Gift Box" onerror="this.onerror=null; this.src='./gift.jpg';">
+        </div>
+        <div id="birthdayText">Happiest Birthday ❤️</div>
+        <button id="continueToEffectsBtn" class="magic-btn">
+            Click continue to read the effects of Mentally damaged Heart
+        </button>
+    </div>
+
+    <!-- Stage 3: Heart Effects Card -->
+    <div id="wishScene" class="stage-container" onclick="openHeartModal(event)">
+        <div class="letter-card">
+            <h2>Effects of a Mentally Damaged Heart 🩹❤️</h2>
+            <p>
+                Side effects include: thinking about you 24/7, uncontrollably smiling at my phone, 
+                and being totally, completely, and hopelessly in love with you every single day!
+                <br><br>
+                Happy Birthday, my favorite person in the entire universe. ✨
+            </p>
+            <div class="click-hint">👉 Click anywhere on the screen 👈</div>
+        </div>
+    </div>
+
+    <!-- Stage 4: Interactive Modals -->
+    <div id="modalLikeHeart" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Do you like your sirpi's heart? 🥺❤️</h3>
+            <div class="choice-btn-group">
+                <button id="yesHeartBtn" class="magic-btn" style="padding: 12px 28px;">YES! 💕</button>
+                <button id="noBtn" class="magic-btn" style="padding: 12px 28px;">NO 😜</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalHoldHand" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Hold sirpi's hand tightly for further excitements... 🤝✨</h3>
+        </div>
+    </div>
+
+    <div id="modalCheckHand" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Have you holds the hands? 🙈</h3>
+            <button id="continueToKitKatBtn" class="magic-btn">Continue ✨</button>
+        </div>
+    </div>
+
+    <!-- Stage 5: Uploaded KitKat Image Surprise -->
+    <div id="kitkatScene" class="stage-container">
+        <div class="kitkat-wrapper">
+            <img id="kitkatImg" src="./kitkat.png" alt="KitKat Bar" onerror="this.onerror=null; this.src='./kitkat.jpg';">
+        </div>
+        <h2 style="font-size: 26px; color: #ff66b2; margin-bottom: 25px; text-shadow: 0 0 15px #ff1493;">
+            A sweet break for the sweetest cutie! 🍫❤️
+        </h2>
+        <button id="claimKitKatBtn" class="magic-btn">
+            Click here to get this from your sirpi 🎁
+        </button>
+    </div>
+
+    <!-- Final Real-Life Reveal -->
+    <div id="finalHandover">
+        <h1>Look up at your Sirpi right now! 🥰</h1>
+        <p>Your special KitKat is waiting for you in real life! 🍫❤️</p>
+    </div>
+
+    <script>
+        // 1. Star lands -> Fade in center button
+        setTimeout(() => {
+            const startBtn = document.getElementById("startButton");
+            startBtn.style.display = "inline-flex";
+        }, 3400);
+
+        // 2. Stage 1 -> Stage 2 (Gift shakes and bursts)
+        document.getElementById("startButton").addEventListener("click", () => {
+            document.getElementById("startButton").remove();
+            document.getElementById("specialStar").remove();
+
+            const scene2 = document.getElementById("birthdayScene");
+            scene2.style.display = "flex";
+
+            setTimeout(() => {
+                const img = document.getElementById("giftBoxImg");
+                const rect = img.getBoundingClientRect();
+                createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                document.getElementById("giftBoxWrapper").style.display = "none";
+
+                const bdayText = document.getElementById("birthdayText");
+                bdayText.style.display = "block";
+
+                // Show button after 5 seconds
+                setTimeout(() => {
+                    document.getElementById("continueToEffectsBtn").style.display = "inline-flex";
+                }, 5000);
+
+            }, 1800);
+        });
+
+        // 3. Stage 2 -> Stage 3 (Effects screen)
+        document.getElementById("continueToEffectsBtn").addEventListener("click", () => {
+            document.getElementById("birthdayScene").style.display = "none";
+            document.getElementById("wishScene").style.display = "flex";
+        });
+
+        // 4. Click anywhere -> Ask "Do you like your sirpi's heart?"
+        let modalOpened = false;
+        function openHeartModal(e) {
+            if (modalOpened) return;
+            modalOpened = true;
+            document.getElementById("modalLikeHeart").style.display = "flex";
+        }
+
+        // 5. High-sensitivity fleeing "NO" button
+        const noBtn = document.getElementById("noBtn");
+
+        function jumpNoButton() {
+            const distance = 160 + Math.random() * 100;
+            const angle = Math.random() * 2 * Math.PI;
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        window.addEventListener("mousemove", (e) => {
+            if (document.getElementById("modalLikeHeart").style.display !== "flex") return;
+            const rect = noBtn.getBoundingClientRect();
+            const btnCenterX = rect.left + rect.width / 2;
+            const btnCenterY = rect.top + rect.height / 2;
+            const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+            if (dist < 110) {
+                jumpNoButton();
+            }
+        });
+
+        noBtn.addEventListener("mouseenter", jumpNoButton);
+        noBtn.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            jumpNoButton();
+        });
+
+        // 6. Click YES -> Hold hand prompt -> 5s check
+        document.getElementById("yesHeartBtn").addEventListener("click", () => {
+            document.getElementById("modalLikeHeart").style.display = "none";
+            
+            const holdModal = document.getElementById("modalHoldHand");
+            holdModal.style.display = "flex";
+
+            setTimeout(() => {
+                holdModal.style.display = "none";
+                document.getElementById("modalCheckHand").style.display = "flex";
+            }, 5000);
+        });
+
+        // 7. Continue -> KitKat reveal
+        document.getElementById("continueToKitKatBtn").addEventListener("click", () => {
+            document.getElementById("modalCheckHand").style.display = "none";
+            document.getElementById("wishScene").style.display = "none";
+
+            const kitkatScene = document.getElementById("kitkatScene");
+            kitkatScene.style.display = "flex";
+        });
+
+        // 8. Claim -> Physical handover screen
+        document.getElementById("claimKitKatBtn").addEventListener("click", () => {
+            document.getElementById("kitkatScene").style.display = "none";
+            document.getElementById("finalHandover").style.display = "flex";
+            createBurst(window.innerWidth / 2, window.innerHeight / 2);
+        });
+
+        // Burst helper
+        function createBurst(originX, originY) {
+            const symbols = ["❤️", "💖", "🌸", "🍫", "✨", "💕", "💋", "😘"];
+            for (let i = 0; i < 34; i++) {
+                const particle = document.createElement("div");
+                particle.className = "particle";
+                particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                particle.style.left = originX + "px";
+                particle.style.top = originY + "px";
+
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 80 + Math.random() * 220;
+
+                particle.style.setProperty("--x", `${Math.cos(angle) * dist}px`);
+                particle.style.setProperty("--y", `${Math.sin(angle) * dist}px`);
+
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1500);
+            }
+        }
+    </script>
+</body>
+</html>
